@@ -1,6 +1,9 @@
 'use strict';
 
+const { countAllRequest } = require('./counter')
+
 module.exports.hello = async (event) => {
+  countAllRequest()
   return {
     statusCode: 200,
     body: JSON.stringify(
