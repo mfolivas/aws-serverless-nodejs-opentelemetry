@@ -1,0 +1,32 @@
+{
+  "name": "aws-serverless-nodejs-opentelemetry",
+  "version": "1.0.0",
+  "description": "Reviewing and using open telemetry",
+  "main": "handler.js",
+  "dependencies": {
+    "@opentelemetry/core": "^0.16.0",
+    "@opentelemetry/exporter-collector-grpc": "^0.18.0",
+    "@opentelemetry/exporter-zipkin": "^0.17.0",
+    "@opentelemetry/instrumentation": "^0.18.0",
+    "@opentelemetry/metrics": "^0.18.0",
+    "@opentelemetry/node": "^0.17.0",
+    "@opentelemetry/plugin-express": "^0.14.0",
+    "@opentelemetry/plugin-http": "^0.18.0",
+    "@opentelemetry/plugin-https": "^0.18.0",
+    "@opentelemetry/tracing": "^0.17.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mfolivas/aws-serverless-nodejs-opentelemetry.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mfolivas/aws-serverless-nodejs-opentelemetry/issues"
+  },
+  "homepage": "https://github.com/mfolivas/aws-serverless-nodejs-opentelemetry#readme"
+}
