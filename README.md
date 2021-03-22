@@ -2,6 +2,8 @@
 Reviewing and using open telemetry
 
 
+You need to install the layers into the application.  You can find the way to do it [here](https://github.com/aws-observability/aws-otel-lambda/tree/main/extensions/aoc-extension).  You need to have the latest Go library.
+
 To run this you need to do it within Docker since the libraries need to compile in Linux:
 ```
 docker build -t serverless-otel .
