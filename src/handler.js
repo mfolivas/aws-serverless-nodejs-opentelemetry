@@ -2,8 +2,10 @@
 
 const tracer = require('./tracer')('aws-otel-integ-test');
 const meter = require('./metric-emitter');
-const AWS = require('aws-sdk');
 const api = require('@opentelemetry/api');
+
+const AWSXRay = require('aws-xray-sdk-core')
+AWSXRay.captureAWS(require('aws-sdk'))
 
 
 module.exports.hello = async (event) => {
