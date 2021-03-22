@@ -9,7 +9,8 @@ const api = require('@opentelemetry/api');
 module.exports.hello = async (event) => {
   console.log('Calling counter')
   const requestStartTime = new Date().getMilliseconds();
-  const traceID = returnTraceIdJson()
+  // const traceID = returnTraceIdJson()
+  // console.log('tracerId', traceID)
   const statusCode = 200
   meter.emitsPayloadMetric(mimicPayLoadSize(), '/outgoing-http-call', statusCode);
   meter.emitReturnTimeMetric(new Date().getMilliseconds() - requestStartTime, '/outgoing-http-call', statusCode);
@@ -32,7 +33,7 @@ module.exports.hello = async (event) => {
 
 const returnTraceIdJson = () => {
   const currentSpan = api.getSpan(api.context.active())
-  const traceId = currentSpan.context().traceId;
+  const traceId = currentSpan.context.traceId;
   const xrayTraceId = "1-" + traceId.substring(0, 8) + "-" + traceId.substring(8);
   const traceIdJson = JSON.stringify({"traceId": xrayTraceId});
   return traceIdJson;

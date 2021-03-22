@@ -35,7 +35,6 @@ module.exports = (serviceName) => {
     },
   };
   const tracerProvider = new NodeTracerProvider(tracerConfig);
-  tracerProvider
   
   // add OTLP exporter
   const otlpExporter = new CollectorTraceExporter({
