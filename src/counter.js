@@ -1,12 +1,14 @@
 const { MeterProvider } = require('@opentelemetry/metrics')
 
-const { ConsoleLogger, LogLevel } = require('@opentelemetry/core')
+const { DiagConsoleLogger, DiagLogLevel, diag } = require('@opentelemetry/api')
 const { CollectorMetricExporter } = require('@opentelemetry/exporter-collector-grpc')
+
+// Optional and only needed to see the internal diagnostic logging (during development)
+diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
 
 
 const metricExporter = new CollectorMetricExporter({
     serviceName: 'aws-otel-js-sample',
-    // logger: new ConsoleLogger(LogLevel.DEBUG),
     url: (process.env.OTEL_EXPORTER_OTLP_ENDPOINT) ? process.env.OTEL_EXPORTER_OTLP_ENDPOINT : "localhost:55680"
   })
 

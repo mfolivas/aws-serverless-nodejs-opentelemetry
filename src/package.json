@@ -4,6 +4,7 @@
   "description": "Reviewing and using open telemetry",
   "main": "handler.js",
   "dependencies": {
+    "@opentelemetry/api": "^1.0.0-rc.0",
     "@opentelemetry/core": "^0.16.0",
     "@opentelemetry/exporter-collector-grpc": "^0.18.0",
     "@opentelemetry/exporter-zipkin": "^0.17.0",
