@@ -9,8 +9,8 @@ const api = require('@opentelemetry/api');
 module.exports.hello = async (event) => {
   console.log('Calling counter')
   const requestStartTime = new Date().getMilliseconds();
-  // const traceID = returnTraceIdJson()
-  // console.log('tracerId', traceID)
+  const traceID = returnTraceIdJson()
+  console.log('tracerId', traceID)
   const statusCode = 200
   meter.emitsPayloadMetric(mimicPayLoadSize(), '/outgoing-http-call', statusCode);
   meter.emitReturnTimeMetric(new Date().getMilliseconds() - requestStartTime, '/outgoing-http-call', statusCode);
