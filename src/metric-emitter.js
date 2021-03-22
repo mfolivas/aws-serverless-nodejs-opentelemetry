@@ -23,13 +23,13 @@ const meter = new MeterProvider({
 }).getMeter('aws-otel');
 
 /**  grabs instanceId and append to metric name to check individual metric for integration test */
-var latencyMetricName = API_LATENCY_METRIC;
-var apiBytesSentMetricName = API_COUNTER_METRIC;
-const instanceId = process.env.INSTANCE_ID || '';
-if (instanceId && instanceId.trim() !== '') {
-    latencyMetricName += '_' + instanceId;
-    apiBytesSentMetricName += '_' + instanceId;
-}
+const latencyMetricName = API_LATENCY_METRIC;
+const  apiBytesSentMetricName = API_COUNTER_METRIC;
+// const instanceId = process.env.INSTANCE_ID || '';
+// if (instanceId && instanceId.trim() !== '') {
+//     latencyMetricName += '_' + instanceId;
+//     apiBytesSentMetricName += '_' + instanceId;
+// }
 
 /** Counter Metrics */
 const payloadMetric = meter.createCounter(apiBytesSentMetricName, {
@@ -42,14 +42,14 @@ const requestLatency = meter.createValueRecorder(latencyMetricName, {
 });
 
 //** binds request latency metric with returnTime */
-function emitReturnTimeMetric(returnTime, apiName, statusCode) {
+const emitReturnTimeMetric = (returnTime, apiName, statusCode) => {
     console.log('emit metric with return time ' + returnTime + ', ' + apiName + ', ' + statusCode);
     const labels = { 'apiName': apiName, 'statusCode': statusCode };
     requestLatency.bind(labels).record(returnTime);
 }
 
 //** emitsPayLoadMetrics() Binds payload Metric with number of bytes */
-function emitsPayloadMetric(bytes, apiName, statusCode) {
+const emitsPayloadMetric = (bytes, apiName, statusCode) => {
     console.log('emit metric with http request size ' + bytes + ' byte, ' + apiName);
     const labels = { 'apiName': apiName, 'statusCode': statusCode };
     payloadMetric.bind(labels).add(bytes);
