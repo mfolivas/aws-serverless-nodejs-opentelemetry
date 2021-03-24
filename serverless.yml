@@ -29,4 +29,8 @@ functions:
     handler: src/handler.hello
     layers:
       - arn:aws:lambda:#{AWS::Region}:#{AWS::AccountId}:layer:aws-otel-collector:1
+    #   - arn:aws:lambda:#{AWS::Region}:297975325230:layer:opentelemetry-lambda-extension:8
+    # environment:
+    #   OPENTELEMETRY_COLLECTOR_CONFIG_FILE: /var/task/collector.yaml
+
 
